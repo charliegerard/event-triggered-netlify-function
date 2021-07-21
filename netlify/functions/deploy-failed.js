@@ -1,8 +1,9 @@
 const fetch = require("node-fetch");
+// require("dotenv").config({ path: "../.env" });
 
 exports.handler = async () => {
   const giphyApiKey = process.env.GIPHY_API_KEY;
-  const slackApiSecret = process.env.SLAKC_API_SECRET;
+  const slackApiSecret = process.env.SLACK_API_SECRET;
   const channelID = process.env.SLACK_CHANNEL_ID;
   const userID = process.env.SLACK_USER_ID;
 
