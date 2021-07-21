@@ -1,5 +1,7 @@
 const fetch = require("node-fetch");
-// require("dotenv").config({ path: "../.env" });
+// if (process.env.NODE_ENV !== "production") {
+//   require("dotenv").config({ path: "../.env" });
+// }
 
 exports.handler = async () => {
   const giphyApiKey = process.env.GIPHY_API_KEY;
@@ -7,13 +9,51 @@ exports.handler = async () => {
   const channelID = process.env.SLACK_CHANNEL_ID;
   const userID = process.env.SLACK_USER_ID;
 
+  // const response = await fetch(
+  //   `http://api.giphy.com/v1/gifs/random?tag=fail&api_key=${giphyApiKey}&limit=1`
+  // );
+  // const { data } = await response.json();
+
+  // const sendGifToSlack = () => {
+  //   return fetch(
+  //     `https://hooks.slack.com/services/${userID}/${channelID}/${slackApiSecret}`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         text: data.url,
+  //       }),
+  //     }
+  //   );
+  // };
+
+  // sendGifToSlack();
+
+  return test(giphyApiKey, slackApiSecret, channelID, userID)
+    .then((d) => {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({}),
+      };
+    })
+    .catch((e) => {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({}),
+      };
+    });
+};
+
+const test = async (giphyApiKey, slackApiSecret, channelID, userID) => {
   const response = await fetch(
-    `http://api.giphy.com/v1/gifs/search?q=fail&api_key=${giphyApiKey}&limit=1`
+    `http://api.giphy.com/v1/gifs/random?tag=fail&api_key=${giphyApiKey}&limit=1`
   );
   const { data } = await response.json();
 
   const sendGifToSlack = () => {
-    fetch(
+    return fetch(
       `https://hooks.slack.com/services/${userID}/${channelID}/${slackApiSecret}`,
       {
         method: "POST",
@@ -21,16 +61,11 @@ exports.handler = async () => {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          text: data[0].url,
+          text: data.url,
         }),
       }
     );
   };
 
   sendGifToSlack();
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ gifUrl: data[0].embed_url }),
-  };
 };
