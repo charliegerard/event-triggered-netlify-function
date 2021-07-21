@@ -34,4 +34,4 @@ And if you followed all the above steps, you should get a new Gif on Slack! :tad
 
 The fastest way to try this demo would be to deploy it on Netlify and add the following environment variables in the site's settings: `GIPHY_API_KEY`, `SLACK_API_SECRET`, `SLACK_CHANNEL_ID`, `SLACK_USER_ID`.
 
-Trigger and cancel a deploy and you should get a gif on Slack!
+Trigger a deploy, cancel it, get a gif on Slack!
