@@ -4,7 +4,7 @@
 
 This is a small demo made with Vanilla JS :heart: to showcase how to use event-triggered Netlify Functions.
 
-This site is deployed on Netlify and when a deploy fails, the function fetches a random gif and posts it on a Slack channel.
+This site is deployed on Netlify and when a deploy fails, the function fetches a random GIF and posts it on a Slack channel.
 
 ## Local development
 
@@ -26,7 +26,7 @@ window.onload = () => {
 };
 ```
 
-And if you followed all the above steps, you should get a new Gif on Slack! :tada:
+And if you followed all the above steps, you should get a new GIF on Slack! :tada:
 
 ## Deploy on Netlify
 
@@ -34,4 +34,4 @@ And if you followed all the above steps, you should get a new Gif on Slack! :tad
 
 The fastest way to try this demo would be to deploy it on Netlify and add the following environment variables in the site's settings: `GIPHY_API_KEY`, `SLACK_API_SECRET`, `SLACK_CHANNEL_ID`, `SLACK_USER_ID`.
 
-Trigger a deploy, cancel it, get a gif on Slack!
+Trigger a deploy, cancel it, get a GIF on Slack!
